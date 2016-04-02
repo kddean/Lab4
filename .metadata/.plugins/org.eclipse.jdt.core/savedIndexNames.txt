@@ -11,7 +11,6 @@ INDEX VERSION 1.127+C:\Users\Khadeidre\Documents\COMP 4302\Lab4\.metadata\.plugi
 2068080903.index
 3296409851.index
 640158368.index
-2232210253.index
 732849940.index
 3446381434.index
 208743281.index
@@ -19,8 +18,8 @@ INDEX VERSION 1.127+C:\Users\Khadeidre\Documents\COMP 4302\Lab4\.metadata\.plugi
 2755228750.index
 2609691646.index
 2021086786.index
-998761327.index
 701457318.index
+998761327.index
 2875136037.index
 838193707.index
 4248032293.index
@@ -30,7 +29,6 @@ INDEX VERSION 1.127+C:\Users\Khadeidre\Documents\COMP 4302\Lab4\.metadata\.plugi
 1674455595.index
 4153052677.index
 281593637.index
-1073870959.index
 1923369000.index
 3471697003.index
 2568757724.index

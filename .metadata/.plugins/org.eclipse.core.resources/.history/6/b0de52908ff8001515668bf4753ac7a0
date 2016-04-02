@@ -33,7 +33,7 @@ public Response create(ToDo i){
 	int id = i.getid();
 	String m = i.getMessage();
 	data.post(id, m);
-	return Response.ok().build();
+	return Response.ok("Success").build();
 }
 
 @GET
