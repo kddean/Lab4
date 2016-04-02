@@ -2,4 +2,4 @@
 
 Belongs to: Khadeidre Dean
 
-Run ToDo.hmtl to start
+Run ToDo.html to start
