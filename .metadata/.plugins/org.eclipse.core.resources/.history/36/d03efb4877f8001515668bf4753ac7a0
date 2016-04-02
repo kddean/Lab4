@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <meta charset="ISO-8859-1"> -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<title>ToDoSystem</title>
+</head>
+<body>
+<div class="container">
+<form name = "ToDoForm" method ="post" action ="ToDoServlet">	
+	<div class="form-group">
+	<p>Which action would you like to do?</p>
+	<p>Create, Update, Display by id, Display all, or Delete</p>
+	<p> For creating, index must start at 0; </p>
+	<select name="actions">
+		<option value="create">Create</option>
+  		<option value="update">Update</option>
+  		<option value="displayid">Display by id</option>
+  		<option value="displayall">Display all</option>
+ 		<option value="delete">Delete</option>
+	</select>
+	<br><br>
+	<label>ID:</label><input type="text" class="form-control" name="id">
+	<br>
+	<label>Message:</label><input type="text" class="form-control" name="message">
+	<br>
+	<button type="button" value="Submit" onclick='loadDoc("ToDo")' class="btn btn-primary">Submit</button>
+<!-- 	<input type="button" value="submit" onclick='loadDoc()'> -->
+	</div>
+	<div id="sec">
+        <fieldset>
+            <legend>Result</legend>
+                 <div id="ajaxResponse"></div>
+        </fieldset>
+    </div>   
+	
+</form>
+</div>
+
+<script type="text/javascript">
+$ajax({
+	url:"/ToDoSystem/create",
+	method:"POST"
+	dataType: "json",
+	success: function(data,status,xhr)
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("button").click(function(){
+		$.get("/displayall/xml", function(data, status){
+			$("#ajaxResponse").load("/displayall/xml", data))
+		})
+		
+	})
+})
+</script>
+</body>
+</html>
