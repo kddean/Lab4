@@ -26,14 +26,19 @@ public void getXML(){
 }*/
 
 @POST
-@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+@Consumes({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
 @Produces({MediaType.APPLICATION_JSON})
 @Path("/create")
 public Response create(ToDo i){
 	int id = i.getid();
 	String m = i.getMessage();
-	data.post(id, m);
-	return Response.ok().build();
+	boolean r = data.post(id, m);
+	String a;
+	if(r == true)
+		a = "Success";
+	else 
+		a = "Error";
+	return Response.ok(a, "application/xml").build();
 }
 
 @GET

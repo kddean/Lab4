@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- <meta charset="ISO-8859-1"> -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<title>ToDoSystem</title>
+</head>
+<body>
+<div class="container">
+<form name = "ToDoForm" method ="post" action ="ToDoServlet">	
+	<div class="form-group">
+	<p>Which action would you like to do?</p>
+	<p>Create, Display by id, Display all, or Delete</p>
+	<p> For creating, index must start at 0; </p>
+	<br>
+	<label>ID:</label><input type="text" class="form-control" id="id">
+	<br>
+	<label>Message:</label><input type="text" class="form-control" id="message">
+	<br>
+	<button type="button" id="create"  class="btn btn-primary">Create</button>
+	<button type="button" id="displayallxml"  class="btn btn-primary">Display all XML</button>
+	<button type="button" id="displayalljson"  class="btn btn-primary">Display all JSON</button>
+	<button type="button" id="displayxml"  class="btn btn-primary">Display Id in XML</button>
+	<button type="button" id="displayjson" class="btn btn-primary">Display ID in JSON</button>
+	<button type="button" id="delete"  class="btn btn-primary">Delete</button>
+<!-- 	<input type="button" value="submit" onclick='loadDoc()'> -->
+	</div>
+	<div id="sec">
+        <fieldset>
+            <legend>Result</legend>
+                 <div id="ajaxResponse"></div>
+        </fieldset>
+    </div>   
+	
+</form>
+</div>
+
+<script type="text/javascript">
+// $ajax({
+// 	url:"/ToDoSystem/create",
+// 	method:"POST"
+// 	dataType: "json",
+// 	success: function(data,status,xhr)
+//})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#displayallxml").click(function(){
+		$.get("http://localhost:8080/ToDoSystem/static/ToDo.html/displayall/xml", function(data, status){
+			$("#ajaxResponse").load("/displayall/xml", data)
+		})
+		
+	})
+})
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	
+	$("#create").click(function(){
+		$.post("/ToDoSystem/create", {
+			var i = document.getElementById("id").value;
+			var m = document.getElementById("message").value;
+		}
+			function(data, status){
+				$("ajaxResponse").load("/create",data)}
+		})
+	})
+	
+	$("#displayalljson").click(function(){
+		$.get("/ToDoSystem/displayall/json", function(data, status){
+			$("#ajaxResponse").load("/displayall/json", data)
+		})
+	})
+	
+	$("#displayxml").click(function(){
+		$.get("/ToDoSystem/displayxml/id: [0-9]+", function(data, status){
+			$("ajaxResponse").load("/displayxml/id: [0-9]+", data)
+		})
+	})
+	
+	$("#displayjson").click(function(){
+		$.get("/ToDoSystem/displayjson/id: [0-9]+", function(data, status){
+			$("ajaxResponse").load("/displayjson/id: [0-9]+", data)
+		})
+	})
+	
+	$("#delete").click(function(){
+		$.get("/ToDoSystem/delete/id: [0-9]+", function(data,status){
+			$("ajaxResponse").load("/delete/id:[0-9]+", data)
+		})
+	})
+})
+</script>
+</body>
+</html>
